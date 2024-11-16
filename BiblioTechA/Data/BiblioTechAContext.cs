@@ -11,6 +11,7 @@ namespace BiblioTechA.Data
         }
         public DbSet<Leitor> Leitores { get; set; }
         public DbSet<Livro> Livros { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<BiblioTechA.Models.Biblioteca> Biblioteca { get; set; } = default!;
     }
 }

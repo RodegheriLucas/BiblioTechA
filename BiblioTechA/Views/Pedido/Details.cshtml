@@ -1,5 +1,4 @@
-﻿@model BiblioTechA.Models.Biblioteca
-
+﻿@model BiblioTechA.Models.Pedido
 
 @{
     ViewData["Title"] = "Details";
@@ -9,29 +8,21 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Biblioteca</h4>
+    <h4>Pedido</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            Nome
+            @Html.DisplayNameFor(model => model.Empresta)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BiblioNome)
+            @Html.DisplayFor(model => model.Empresta)
         </dd>
         <dt class = "col-sm-2">
-            Endereço
+            @Html.DisplayNameFor(model => model.Devolve)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Endereco)
+            @Html.DisplayFor(model => model.Devolve)
         </dd>
-        <dd class = "col-sm-2">
-            Acervo
-        </dd>
-        <dl class = "row">
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Livro.Titulo)
-            </dd>
-        </dl>
     </dl>
 </div>
 <div>
