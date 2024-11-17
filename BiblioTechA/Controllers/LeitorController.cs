@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using BiblioTechA.Data;
 using BiblioTechA.Models;
 
+
+//Precisa adicionar um meio de gerar a ID Automaticamente ao criar um novo Leitor
+//Leitor não está sendo criado
 namespace BiblioTechA.Controllers
 {
     public class LeitorController : Controller
@@ -54,7 +57,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Leitor leitor)
+        public async Task<IActionResult> Create([Bind("Cpf,Nome,Nascimento")] Leitor leitor)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +89,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Nome")] Leitor leitor)
+        public async Task<IActionResult> Edit(string id, [Bind("Cpf,Nome,Nascimento")] Leitor leitor)
         {
             if (id != leitor.Id)
             {

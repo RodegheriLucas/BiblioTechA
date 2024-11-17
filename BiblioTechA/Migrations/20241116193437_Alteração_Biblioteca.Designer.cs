@@ -4,6 +4,7 @@ using BiblioTechA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiblioTechA.Migrations
 {
     [DbContext(typeof(BiblioTechAContext))]
-    partial class BiblioTechAContextModelSnapshot : ModelSnapshot
+    [Migration("20241116193437_Alteração_Biblioteca")]
+    partial class Alteração_Biblioteca
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,12 +61,11 @@ namespace BiblioTechA.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Cpf")
+                        .HasColumnType("int");
 
-                    b.Property<DateOnly>("Nascimento")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Nascimento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nome")
                         .IsRequired()

@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Livro</h4>
+<h1>Editar Livro</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,25 +13,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
+                <label asp-for="Titulo" class="control-label">Título</label>
                 <input asp-for="Titulo" class="form-control" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
+                <label asp-for="Descricao" class="control-label">Descrição</label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
+                <label asp-for="Genero" class="control-label">Gênero</label>
                 <input asp-for="Genero" class="form-control" />
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BibliotecaId" class="control-label"></label>
-                <select asp-for="BibliotecaId" class="form-control" asp-items="ViewBag.BibliotecaId"></select>
-                <span asp-validation-for="BibliotecaId" class="text-danger"></span>
-            </div>
+            <br>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -42,9 +38,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-warning">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

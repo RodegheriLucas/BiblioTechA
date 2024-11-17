@@ -22,8 +22,7 @@ namespace BiblioTechA.Controllers
         // GET: Livro
         public async Task<IActionResult> Index()
         {
-            var biblioTechAContext = _context.Livros.Include(l => l.Biblioteca);
-            return View(await biblioTechAContext.ToListAsync());
+            return View(await _context.Livros.ToListAsync());
         }
 
         // GET: Livro/Details/5
@@ -35,7 +34,6 @@ namespace BiblioTechA.Controllers
             }
 
             var livro = await _context.Livros
-                .Include(l => l.Biblioteca)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (livro == null)
             {
@@ -48,7 +46,6 @@ namespace BiblioTechA.Controllers
         // GET: Livro/Create
         public IActionResult Create()
         {
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "Id");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Genero,LeitorCpf,BibliotecaId")] Livro livro)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Genero")] Livro livro)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace BiblioTechA.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "Id", livro.BibliotecaId);
             return View(livro);
         }
 
@@ -82,7 +78,6 @@ namespace BiblioTechA.Controllers
             {
                 return NotFound();
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "Id", livro.BibliotecaId);
             return View(livro);
         }
 
@@ -91,7 +86,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,Genero,LeitorCpf,BibliotecaId")] Livro livro)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,Genero")] Livro livro)
         {
             if (id != livro.Id)
             {
@@ -118,7 +113,6 @@ namespace BiblioTechA.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "Id", livro.BibliotecaId);
             return View(livro);
         }
 
@@ -131,7 +125,6 @@ namespace BiblioTechA.Controllers
             }
 
             var livro = await _context.Livros
-                .Include(l => l.Biblioteca)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (livro == null)
             {
