@@ -8,5 +8,6 @@
         public string Genero { get; set; }
         public int BibliotecaId { get; set; }
         public Biblioteca? Biblioteca { get; set; }
+        public ICollection<LivroPedido>? LivroPedidos { get; set; }
     }
 }

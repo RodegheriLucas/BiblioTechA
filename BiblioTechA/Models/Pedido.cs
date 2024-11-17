@@ -7,7 +7,6 @@
         public DateTime Devolve { get; set; }
         public int LeitorId { get; set; }
         public Leitor? Leitor { get; set; }
-        public int LivroId { get; set; }
-        public Livro? Livro { get; set; }
+        public virtual ICollection<LivroPedido>? PedidoLivros { get; set; }
     }
 }

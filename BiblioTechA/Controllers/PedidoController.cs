@@ -22,7 +22,6 @@ namespace BiblioTechA.Controllers
         // GET: Pedido
         public async Task<IActionResult> Index()
         {
-            var pedidoContext = _context.Pedidos.Include(ap => ap.Livro).Include(ap => ap.Leitor);
             return View(await _context.Pedidos.ToListAsync());
         }
 
@@ -35,7 +34,6 @@ namespace BiblioTechA.Controllers
             }
 
             var pedido = await _context.Pedidos
-                .Include(ap => ap.Livro)
                 .Include(ap => ap.Leitor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (pedido == null)
@@ -59,11 +57,10 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Empresta,Devolve,LeitorId,LivroId")] Pedido pedido)
+        public async Task<IActionResult> Create([Bind("Id,Empresta,Devolve,LeitorId")] Pedido pedido)
         {
             if (!ModelState.IsValid)
             {
-                ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Titulo", pedido.Id);
                 ViewData["LeitorId"] = new SelectList(_context.Leitores, "Id", "Nome", pedido.Id);
                 return View(pedido);
             }
@@ -91,7 +88,6 @@ namespace BiblioTechA.Controllers
             {
                 return NotFound();
             }
-            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Titulo");
             ViewData["LeitorId"] = new SelectList(_context.Leitores, "Id", "Nome");
             return View(pedido);
         }
@@ -101,7 +97,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Empresta,Devolve,LeitorId,LivroId")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Empresta,Devolve,LeitorId")] Pedido pedido)
         {
             if (id != pedido.Id)
             {

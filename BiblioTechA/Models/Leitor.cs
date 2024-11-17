@@ -8,7 +8,5 @@
         public string Cpf { get; set; }
         //Alterado o tipo para DateOnly, para remover o horário que vinha junto a data
         public DateOnly Nascimento { get; set; }
-        public ICollection<Livro> Livros { get; set; } = new List<Livro>();
     }
 }
-// Precisa adicionar um meio de gerar a ID Automaticamente ao criar um novo Leitor
