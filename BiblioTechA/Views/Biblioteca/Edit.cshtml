@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Biblioteca</h4>
+<h1>Editar Biblioteca</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,24 +13,26 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="BiblioNome" class="control-label"></label>
+                <label asp-for="BiblioNome">Nome</label>
                 <input asp-for="BiblioNome" class="form-control" />
                 <span asp-validation-for="BiblioNome" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Endereco" class="control-label"></label>
                 <input asp-for="Endereco" class="form-control" />
                 <span asp-validation-for="Endereco" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-warning">Back to List</a>
 </div>
 
 @section Scripts {
