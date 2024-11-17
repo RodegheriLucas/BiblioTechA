@@ -38,20 +38,18 @@ namespace BiblioTechA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LeitorId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LeitorId");
 
                     b.ToTable("Biblioteca");
                 });
 
             modelBuilder.Entity("BiblioTechA.Models.Leitor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -88,8 +86,8 @@ namespace BiblioTechA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LeitorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("LeitorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
@@ -119,28 +117,19 @@ namespace BiblioTechA.Migrations
                     b.Property<DateTime>("Empresta")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LeitorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("LeitorId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("LivroNomeId")
+                    b.Property<int>("LivroId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LeitorId");
 
-                    b.HasIndex("LivroNomeId");
+                    b.HasIndex("LivroId");
 
                     b.ToTable("Pedidos");
-                });
-
-            modelBuilder.Entity("BiblioTechA.Models.Biblioteca", b =>
-                {
-                    b.HasOne("BiblioTechA.Models.Leitor", "Leitor")
-                        .WithMany()
-                        .HasForeignKey("LeitorId");
-
-                    b.Navigation("Leitor");
                 });
 
             modelBuilder.Entity("BiblioTechA.Models.Livro", b =>
@@ -162,15 +151,19 @@ namespace BiblioTechA.Migrations
                 {
                     b.HasOne("BiblioTechA.Models.Leitor", "Leitor")
                         .WithMany()
-                        .HasForeignKey("LeitorId");
+                        .HasForeignKey("LeitorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("BiblioTechA.Models.Livro", "LivroNome")
+                    b.HasOne("BiblioTechA.Models.Livro", "Livro")
                         .WithMany()
-                        .HasForeignKey("LivroNomeId");
+                        .HasForeignKey("LivroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Leitor");
 
-                    b.Navigation("LivroNome");
+                    b.Navigation("Livro");
                 });
 
             modelBuilder.Entity("BiblioTechA.Models.Biblioteca", b =>

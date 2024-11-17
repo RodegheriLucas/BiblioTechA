@@ -23,7 +23,6 @@ namespace BiblioTechA.Controllers
         public async Task<IActionResult> Index()
         {
             var livroContext = _context.Livros.Include(ap => ap.Biblioteca);
-            //return View(await _context.Livros.ToListAsync());
             return View(livroContext.ToList());
         }
 
@@ -89,7 +88,7 @@ namespace BiblioTechA.Controllers
             {
                 return NotFound();
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "id", "BiblioNome");
+            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "BiblioNome");
             return View(livro);
         }
 

@@ -26,7 +26,7 @@ namespace BiblioTechA.Migrations
                 name: "Leitores",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -42,7 +42,7 @@ namespace BiblioTechA.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BiblioNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Endereco = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LeitorId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    LeitorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace BiblioTechA.Migrations
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Genero = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LeitorCpf = table.Column<int>(type: "int", nullable: true),
-                    LeitorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    LeitorId = table.Column<int>(type: "int", nullable: true),
                     BibliotecaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

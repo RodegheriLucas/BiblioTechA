@@ -123,14 +123,14 @@ namespace BiblioTechA.Migrations
                     b.Property<string>("LeitorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("LivroNomeId")
+                    b.Property<int?>("LivroId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LeitorId");
 
-                    b.HasIndex("LivroNomeId");
+                    b.HasIndex("LivroId");
 
                     b.ToTable("Pedidos");
                 });
@@ -165,7 +165,7 @@ namespace BiblioTechA.Migrations
 
                     b.HasOne("BiblioTechA.Models.Livro", "LivroNome")
                         .WithMany()
-                        .HasForeignKey("LivroNomeId");
+                        .HasForeignKey("LivroId");
 
                     b.Navigation("Leitor");
 

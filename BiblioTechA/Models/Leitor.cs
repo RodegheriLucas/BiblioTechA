@@ -2,7 +2,7 @@
 {
     public class Leitor
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         //Relacionando o Livro com o Leitor
         public string Cpf { get; set; }

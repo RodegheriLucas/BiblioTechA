@@ -5,7 +5,9 @@
         public int Id { get; set; }
         public DateTime Empresta { get; set; }
         public DateTime Devolve { get; set; }
+        public int LeitorId { get; set; }
         public Leitor? Leitor { get; set; }
-        public Livro? LivroNome { get; set; }
+        public int LivroId { get; set; }
+        public Livro? Livro { get; set; }
     }
 }

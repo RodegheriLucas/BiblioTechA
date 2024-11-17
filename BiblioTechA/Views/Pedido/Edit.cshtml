@@ -25,6 +25,15 @@
                 <span asp-validation-for="Devolve" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LivroId" class="control-label">Livro</label>
+                <select asp-for="LivroId" class="form-control" asp-items="ViewBag.LivroId"></select>
+                <span asp-validation-for="LivroId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeitorId" class="control-label">Leitor</label>
+                <select asp-for="LeitorId" class="form-control" asp-items="ViewBag.LeitorId"></select>
+                <span asp-validation-for="LeitorId" class="text-danger"></span>
+            </div>            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -36,5 +45,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

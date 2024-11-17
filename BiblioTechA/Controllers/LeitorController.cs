@@ -29,7 +29,7 @@ namespace BiblioTechA.Controllers
         }
 
         // GET: Leitor/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -69,7 +69,7 @@ namespace BiblioTechA.Controllers
         }
 
         // GET: Leitor/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -89,7 +89,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Cpf,Nome,Nascimento")] Leitor leitor)
+        public async Task<IActionResult> Edit(int id, [Bind("Cpf,Nome,Nascimento")] Leitor leitor)
         {
             if (id != leitor.Id)
             {
@@ -120,7 +120,7 @@ namespace BiblioTechA.Controllers
         }
 
         // GET: Leitor/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -152,7 +152,7 @@ namespace BiblioTechA.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LeitorExists(string id)
+        private bool LeitorExists(int id)
         {
             return _context.Leitores.Any(e => e.Id == id);
         }

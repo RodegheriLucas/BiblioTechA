@@ -37,8 +37,8 @@ namespace BiblioTechA.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Empresta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Devolve = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LeitorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    LivroNomeId = table.Column<int>(type: "int", nullable: true)
+                    LeitorId = table.Column<int>(type: "int", nullable: true),
+                    LivroId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,8 +49,8 @@ namespace BiblioTechA.Migrations
                         principalTable: "Leitores",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pedidos_Livros_LivroNomeId",
-                        column: x => x.LivroNomeId,
+                        name: "FK_Pedidos_Livros_LivroId",
+                        column: x => x.LivroId,
                         principalTable: "Livros",
                         principalColumn: "Id");
                 });
@@ -61,9 +61,9 @@ namespace BiblioTechA.Migrations
                 column: "LeitorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_LivroNomeId",
+                name: "IX_Pedidos_LivroId",
                 table: "Pedidos",
-                column: "LivroNomeId");
+                column: "LivroId");
         }
 
         /// <inheritdoc />
