@@ -30,6 +30,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Genero)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Biblioteca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Biblioteca.BiblioNome)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

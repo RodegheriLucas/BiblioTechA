@@ -6,7 +6,5 @@
         public string BiblioNome { get; set; }
         public string Endereco { get; set; }
         public Livro? Livro { get; set; }
-        public Leitor? Leitor { get; set; }
-        
     }
 }
