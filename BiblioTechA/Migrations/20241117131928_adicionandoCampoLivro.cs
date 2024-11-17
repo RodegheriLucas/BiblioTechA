@@ -33,7 +33,7 @@ namespace BiblioTechA.Migrations
                 name: "IX_Livros_BibliotecaId",
                 table: "Livros",
                 column: "BibliotecaId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Livros_Biblioteca_BibliotecaId",

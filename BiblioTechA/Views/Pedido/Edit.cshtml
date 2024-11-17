@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
+<div class="text-center">
+    <h1>Editar Pedido</h1>
+</div>
+<br />
 <h4>Pedido</h4>
 <hr />
 <div class="row">
@@ -19,29 +21,34 @@
                 <input asp-for="Empresta" class="form-control" />
                 <span asp-validation-for="Empresta" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Devolve" class="control-label"></label>
                 <input asp-for="Devolve" class="form-control" />
                 <span asp-validation-for="Devolve" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="LivroId" class="control-label">Livro</label>
-                <select asp-for="LivroId" class="form-control" asp-items="ViewBag.LivroId"></select>
+                <select asp-for="LivroId" class="form-control" asp-items="ViewBag.Livros"></select>
                 <span asp-validation-for="LivroId" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="LeitorId" class="control-label">Leitor</label>
-                <select asp-for="LeitorId" class="form-control" asp-items="ViewBag.LeitorId"></select>
+                <select asp-for="LeitorId" class="form-control" asp-items="ViewBag.Leitores"></select>
                 <span asp-validation-for="LeitorId" class="text-danger"></span>
-            </div>            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a lista</a>
 </div>
 
 @section Scripts {
