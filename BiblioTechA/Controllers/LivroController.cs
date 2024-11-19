@@ -46,6 +46,15 @@ namespace BiblioTechA.Controllers
                 return NotFound();
             }
 
+            // Obter todos os livros da mesma biblioteca, exceto o livro atual
+            var livrosRelacionados = await _context.Livros
+                .AsNoTracking()  // Desabilita o tracking, forçando uma nova consulta
+                .Where(l => l.BibliotecaId == livro.BibliotecaId && l.Id != livro.Id)  
+                .Include(l => l.Biblioteca)  
+                .ToListAsync();
+
+            ViewData["LivrosRelacionados"] = livrosRelacionados;
+
             return View(livro);
         }
 
