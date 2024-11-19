@@ -1,41 +1,43 @@
 ﻿@model BiblioTechA.Models.Pedido
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar Pedido";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>Pedido</h4>
+<h1>Criar Pedido</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="Empresta" class="control-label"></label>
+                <label asp-for="Empresta">Data de Empréstimo</label>
                 <input asp-for="Empresta" class="form-control" />
                 <span asp-validation-for="Empresta" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Devolve" class="control-label"></label>
+                <label asp-for="Devolve">Data de Devolução</label>
                 <input asp-for="Devolve" class="form-control" />
                 <span asp-validation-for="Devolve" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
                 <label asp-for="LeitorId">Leitor</label>
                 <select asp-for="LeitorId" class="form-control" asp-items="ViewBag.LeitorId"></select>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-warning">Voltar para a Lista</a>
 </div>
 
 @section Scripts {
