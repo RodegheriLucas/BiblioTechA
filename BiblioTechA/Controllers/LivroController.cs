@@ -22,8 +22,12 @@ namespace BiblioTechA.Controllers
         // GET: Livro
         public async Task<IActionResult> Index()
         {
-            var livroContext = _context.Livros.Include(ap => ap.Biblioteca);
-            return View(livroContext.ToList());
+            var livros = await _context.Livros
+                .AsNoTracking()  // Desabilita o tracking, forçando uma nova consulta
+                .Include(l => l.Biblioteca) // Certifique-se de carregar a biblioteca junto
+                .ToListAsync();
+
+            return View(livros);
         }
 
         // GET: Livro/Details/5
