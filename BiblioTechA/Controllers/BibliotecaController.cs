@@ -33,6 +33,7 @@ namespace BiblioTechA.Controllers
                 return NotFound();
             }
 
+            var livros = _context.Biblioteca.Include(c => c.LivroNoAcervo).FirstOrDefault(m => m.Id == id);
             var biblioteca = await _context.Biblioteca
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (biblioteca == null)
@@ -56,7 +57,7 @@ namespace BiblioTechA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,BiblioNome,Endereco")] Biblioteca biblioteca)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(biblioteca);
                 await _context.SaveChangesAsync();

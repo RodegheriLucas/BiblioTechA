@@ -1,40 +1,50 @@
 ﻿@model BiblioTechA.Models.Biblioteca
 
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes da Biblioteca";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalhes da Biblioteca</h1>
 
 <div>
-    <h4>Biblioteca</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Nome
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.BiblioNome)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Endereço
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Endereco)
         </dd>
-        <dd class = "col-sm-2">
-            Acervo
-        </dd>
-        <dl class = "row">
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Livro.Titulo)
-            </dd>
-        </dl>
     </dl>
+
+    <h4>Acervo</h4>
+    @if (Model.LivroNoAcervo.Count > 0)
+    {
+        @foreach (var livro in Model.LivroNoAcervo)
+        {
+            <tr>
+                <td>@livro.Livro.Titulo</td>
+
+                <td>@livro.Livro.Descricao</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>Não possui livros cadastrados</td>
+        </tr>
+    }
 </div>
+<br />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-info">Editar</a> |
+    <a asp-action="Index" class="btn btn-outline-warning">Voltar à Lista</a>
 </div>

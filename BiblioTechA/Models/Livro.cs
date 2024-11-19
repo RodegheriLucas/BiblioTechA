@@ -6,7 +6,7 @@
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Genero { get; set; }
-        public int BibliotecaId { get; set; }
-        public Biblioteca? Biblioteca { get; set; }
+        public int BiblioId { get; set; }
+        public Biblioteca Biblioteca { get; set; }
     }
 }

@@ -65,14 +65,14 @@ namespace BiblioTechA.Migrations
                     Genero = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LeitorCpf = table.Column<int>(type: "int", nullable: true),
                     LeitorId = table.Column<int>(type: "int", nullable: true),
-                    BibliotecaId = table.Column<int>(type: "int", nullable: false)
+                    BiblioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Livros", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Livros_Biblioteca_BibliotecaId",
-                        column: x => x.BibliotecaId,
+                        name: "FK_Livros_Biblioteca_BiblioId",
+                        column: x => x.BiblioId,
                         principalTable: "Biblioteca",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -89,9 +89,9 @@ namespace BiblioTechA.Migrations
                 column: "LeitorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Livros_BibliotecaId",
+                name: "IX_Livros_BiblioId",
                 table: "Livros",
-                column: "BibliotecaId",
+                column: "BiblioId",
                 unique: true);
 
             migrationBuilder.CreateIndex(

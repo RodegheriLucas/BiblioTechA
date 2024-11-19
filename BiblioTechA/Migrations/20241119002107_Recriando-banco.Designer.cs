@@ -4,6 +4,7 @@ using BiblioTechA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiblioTechA.Migrations
 {
     [DbContext(typeof(BiblioTechAContext))]
-    partial class BiblioTechAContextModelSnapshot : ModelSnapshot
+    [Migration("20241119002107_Recriando-banco")]
+    partial class Recriandobanco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,8 +83,7 @@ namespace BiblioTechA.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -95,12 +97,6 @@ namespace BiblioTechA.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BiblioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BibliotecaId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -118,8 +114,6 @@ namespace BiblioTechA.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BibliotecaId");
 
                     b.HasIndex("LeitorId");
 
@@ -174,17 +168,9 @@ namespace BiblioTechA.Migrations
 
             modelBuilder.Entity("BiblioTechA.Models.Livro", b =>
                 {
-                    b.HasOne("BiblioTechA.Models.Biblioteca", "Biblioteca")
-                        .WithMany()
-                        .HasForeignKey("BibliotecaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BiblioTechA.Models.Leitor", null)
                         .WithMany("Livros")
                         .HasForeignKey("LeitorId");
-
-                    b.Navigation("Biblioteca");
                 });
 
             modelBuilder.Entity("BiblioTechA.Models.Pedido", b =>

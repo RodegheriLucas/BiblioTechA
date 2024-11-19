@@ -21,21 +21,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BiblioNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
-}
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.BiblioNome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Endereco)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">Nenhum livro disponível.</td>
+            </tr>
+        }
     </tbody>
 </table>
 <p>

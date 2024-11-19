@@ -23,22 +23,22 @@ namespace BiblioTechA.Migrations
                 table: "Biblioteca");
 
             migrationBuilder.AddColumn<int>(
-                name: "BibliotecaId",
+                name: "BiblioId",
                 table: "Livros",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Livros_BibliotecaId",
+                name: "IX_Livros_BiblioId",
                 table: "Livros",
-                column: "BibliotecaId",
+                column: "BiblioId",
                 unique: false);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Livros_Biblioteca_BibliotecaId",
+                name: "FK_Livros_Biblioteca_BiblioId",
                 table: "Livros",
-                column: "BibliotecaId",
+                column: "BiblioId",
                 principalTable: "Biblioteca",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -48,15 +48,15 @@ namespace BiblioTechA.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Livros_Biblioteca_BibliotecaId",
+                name: "FK_Livros_Biblioteca_BiblioId",
                 table: "Livros");
 
             migrationBuilder.DropIndex(
-                name: "IX_Livros_BibliotecaId",
+                name: "IX_Livros_BiblioId",
                 table: "Livros");
 
             migrationBuilder.DropColumn(
-                name: "BibliotecaId",
+                name: "BiblioId",
                 table: "Livros");
 
             migrationBuilder.AddColumn<int>(

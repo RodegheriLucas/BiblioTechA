@@ -5,53 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1>Central de Livros</h1>
-</div>
-<br />
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Título
+                @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
-                Descrição
+                @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th>
-                Gênero
+                @Html.DisplayNameFor(model => model.Genero)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Biblioteca)
+                @Html.DisplayNameFor(model => model.BiblioId)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genero)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Biblioteca.BiblioNome)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-info">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BiblioId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-<p>
-    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
-</p>

@@ -1,37 +1,37 @@
 ﻿@model BiblioTechA.Models.Pedido
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Excluir Pedido</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza de que deseja excluir este item?</h3>
 <div>
     <h4>Pedido</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Empresta)
+            Data de Empréstimo
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Empresta)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Devolve)
+            Data de Devolução
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Devolve)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Livro)
+            Livro
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Livro.Titulo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Leitor)
+            Leitor
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Leitor.Nome)
@@ -40,7 +40,7 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Excluir" class="btn btn-outline-danger" /> |
+        <a asp-action="Index" class="btn btn-outline-secondary">Voltar à lista</a>
     </form>
 </div>

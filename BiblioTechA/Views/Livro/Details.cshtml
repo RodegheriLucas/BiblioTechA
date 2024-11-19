@@ -5,39 +5,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detalhes</h1>
+<h1>Details</h1>
 
 <div>
     <h4>Livro</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            Título
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Titulo)
         </dd>
-        <dt class="col-sm-2">
-            Descrição
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Descricao)
         </dd>
-        <dt class="col-sm-2">
-            Gênero
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genero)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Genero)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Biblioteca)
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BiblioId)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Biblioteca.BiblioNome)
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BiblioId)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-info">Editar</a> |
-    <a asp-action="Index" class="btn btn-outline-warning">Voltar à lista</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

@@ -5,32 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalhes</h1>
 
 <div>
     <h4>Pedido</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Empresta)
+            Data de Empréstimo
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Empresta)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Devolve)
+            Data de Devolução
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Devolve)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Livro)
+            Livro
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Livro.Titulo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Leitor)
+            Leitor
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Leitor.Nome)
@@ -38,6 +38,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-info">Editar</a> |
+    <a asp-action="Index" class="btn btn-outline-warning">Voltar à lista</a>
 </div>

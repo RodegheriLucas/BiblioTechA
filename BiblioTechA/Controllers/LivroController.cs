@@ -22,8 +22,7 @@ namespace BiblioTechA.Controllers
         // GET: Livro
         public async Task<IActionResult> Index()
         {
-            var livroContext = _context.Livros.Include(ap => ap.Biblioteca);
-            return View(livroContext.ToList());
+            return View();
         }
 
         // GET: Livro/Details/5
@@ -35,7 +34,6 @@ namespace BiblioTechA.Controllers
             }
 
             var livro = await _context.Livros
-                .Include(m => m.Biblioteca)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (livro == null)
             {
@@ -48,7 +46,6 @@ namespace BiblioTechA.Controllers
         // GET: Livro/Create
         public IActionResult Create()
         {
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "BiblioNome");
             return View();
         }
 
@@ -57,22 +54,15 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Genero, BibliotecaId")] Livro livro)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,Genero,BiblioId")] Livro livro)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "BiblioNome", livro.Id);
-                return View(livro);
+                _context.Add(livro);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-
-            if (livro == null)
-            {
-                return NotFound();
-            }
-
-            _context.Add(livro);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return View(livro);
         }
 
         // GET: Livro/Edit/5
@@ -88,7 +78,6 @@ namespace BiblioTechA.Controllers
             {
                 return NotFound();
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Biblioteca, "Id", "BiblioNome");
             return View(livro);
         }
 
@@ -97,7 +86,7 @@ namespace BiblioTechA.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,Genero, BibliotecaId")] Livro livro)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,Genero,BiblioId")] Livro livro)
         {
             if (id != livro.Id)
             {
